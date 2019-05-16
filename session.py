@@ -10,21 +10,24 @@ import time
 
 #Note: the break condition would changed based on the user closing the progam, hardware limits, or if the computer goes to sleep.
 
-break_condition = False
+break_condition = False #Alter the break_condition based on the conditions to shut down the program
 
 mood_reactions = {
-
     "Sad": "Have a nice day!",
     "Lonely": "I your friend.",
     "Happy": "Your on fire!!",
     "Focused": "Good work.",
     "Bored": "Read a good book....",
-    }
+    } #Using a dictionary to link the user mood to an appropriate reaction
 
 wait_time = 5 #In minutes
 
 while break_condition is False:
 
-    time.sleep(60*wait_time)
-    face =  snap()
-    create_notification(mood_reactions[mood_detect(face)])
+    time.sleep(60*wait_time) #Making it so the program will run constantly but only compute/proceed every X minutes
+    
+    face =  snap() #Put the faces of the user into a variable
+    
+    react = mood_reactions[mood_detect(face)] #Look up a reaction to the user mood.
+    
+    create_notification(react) #Apply the mood the notification function
