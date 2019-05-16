@@ -6,18 +6,18 @@ from cv2 import *
 #   then the face_casacde obj is used to produce a face detector, based of the xml file.
 #   after all is done release the camera and rtn the faces seen
 
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0) #Define a video camera to use.
 
 def snap():
 
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface.xml')
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface.xml') #Create a face detection obj
 
-    ret, frame = cam.read()
+    ret, frame = cam.read() #Read the image from the "cam" obj
 
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #Convert the image to grey-scale
 
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5) 
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5) #Apply the face detection to the grey-scale image
            
-    cam.release()
+    cam.release() #Release the camera
 
-    return faces
+    return faces #Return all found faces of the grey-scale image
