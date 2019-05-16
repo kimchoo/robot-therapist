@@ -1,4 +1,5 @@
 from cv2 import *
+import numpy as np
 
 #Psuedo Code:
 #   because the open cv read() method is only called once (outside a loop). the program will only work with a single picture (hence the snap name)
@@ -13,11 +14,10 @@ def snap():
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface.xml') #Create a face detection obj
 
     ret, frame = cam.read() #Read the image from the "cam" obj
+        
+    if ret:
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #Convert the image to grey-scale
 
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) #Convert the image to grey-scale
-
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5) #Apply the face detection to the grey-scale image
-           
-    cam.release() #Release the camera
-
-    return faces #Return all found faces of the grey-scale image
+        faces = face_cascade.detectMultiScale(gray, 1.3, 5) #Apply the face detection to the grey-scale image
+        
+        cam.release() #Release the camera
