@@ -6,7 +6,7 @@ import time
 #   using the returned face image, the hypothetical mood_detect method returns your mood based on your face
 #   the returned mood is used as the key to direct the create_notification
 
-#Note: the code is constantly running but only proceeds every 5 minutes
+#Note: the code is constantly  but only proceeds every 5 minutes
 
 #Note: the break condition would changed based on the user closing the progam, hardware limits, or if the computer goes to sleep.
 
@@ -17,7 +17,7 @@ mood_reactions = {
     "Lonely": "I your friend.",
     "Happy": "Your on fire!!",
     "Focused": "Good work.",
-    "Bored": "Read a good book....",
+    "Bored": "Read a good book...."
     } #Using a dictionary to link the user mood to an appropriate reaction
 
 wait_time = 5 #In minutes
@@ -30,4 +30,4 @@ while break_condition is False:
     
     react = mood_reactions[mood_detect(face)] #Look up a reaction to the user mood.
     
-    create_notification(react) #Apply the mood the notification function
+    create_notification(react) #Apply the mood the notification functionrunning
